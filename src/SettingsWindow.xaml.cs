@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,36 @@ namespace NMSMerge
             Settings.Default.Save();
             DialogResult = true;
             Close();
+        }
+
+        private void BrowseModsFolder_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true,
+                Title = "Mods folder"
+            };
+            var result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok)
+                txtModsFolder.Text = dialog.FileNames.First();
+        }
+
+        private void BrowseGameFolder_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true,
+                Title = "Game folder"
+            };
+            var result = dialog.ShowDialog();
+            if (result == CommonFileDialogResult.Ok)
+                txtGameFolder.Text = dialog.FileNames.First();
+        }
+
+        private void SettingsWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            txtModsFolder.Text = Settings.Default.ModsFolder;
+            txtGameFolder.Text = Settings.Default.GameFolder;
         }
     }
 }

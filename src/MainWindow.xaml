@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NMSMerge2"
         mc:Ignorable="d"
-        Title="NMS Mod Manager" Height="600" Width="800" Closing="MainWindow_OnClosing" Loaded="MainWindow_OnLoaded">
+        Title="NMS Mod Manager" Height="600" Width="800" Closing="MainWindow_OnClosing" Loaded="MainWindow_OnLoaded" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StatusBarItem>
