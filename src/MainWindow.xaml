@@ -1,9 +1,9 @@
-﻿<Window x:Class="NMSMerge2.MainWindow"
+﻿<Window x:Class="NMSMerge.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NMSMerge2"
+        xmlns:local="clr-namespace:NMSMerge"
         mc:Ignorable="d"
         Title="NMS Mod Manager" Height="600" Width="800" Closing="MainWindow_OnClosing" Loaded="MainWindow_OnLoaded" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <DockPanel>

@@ -15,9 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NMSMerge;
-using NMSMerge2.Properties;
+using NMSMerge.Properties;
 
-namespace NMSMerge2
+namespace NMSMerge
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

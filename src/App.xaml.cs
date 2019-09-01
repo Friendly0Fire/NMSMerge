@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using NMSMerge;
 
-namespace NMSMerge2
+namespace NMSMerge
 {
     /// <summary>
     /// Interaction logic for App.xaml

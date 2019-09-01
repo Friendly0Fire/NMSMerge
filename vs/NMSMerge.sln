@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMSMerge", "NMSMerge.csproj", "{2910D67A-AB9B-42FC-95BE-85336202C34B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMSMerge", "..\src\NMSMerge.csproj", "{2910D67A-AB9B-42FC-95BE-85336202C34B}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "libMBIN-Shared", "..\deps\MBINCompiler\libMBIN\libMBIN-Shared.shproj", "{B6850F17-D8FD-48DE-9CF2-240F1BA87236}"
 EndProject
