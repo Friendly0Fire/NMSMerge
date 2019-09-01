@@ -70,6 +70,7 @@
     <Compile Include="..\src\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\src\MBINDatabase.cs" />
     <Page Include="..\src\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
