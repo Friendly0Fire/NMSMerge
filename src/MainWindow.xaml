@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NMSMerge2"
         mc:Ignorable="d"
-        Title="NMS Mod Manager" Height="600" Width="800">
+        Title="NMS Mod Manager" Height="600" Width="800" Closing="MainWindow_OnClosing" Loaded="MainWindow_OnLoaded">
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StatusBarItem>
-                <Label Content="Ready" />
+                <Label Name="lblStatus" Content="Ready" />
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
-                <ProgressBar Width="200" Height="20" />
+                <ProgressBar Name="barProgress" Width="200" Height="20" />
             </StatusBarItem>
         </StatusBar>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Reload Mods"></MenuItem>
-                <MenuItem Header="_Open Mods Folder"></MenuItem>
+                <MenuItem Header="_Reload Mods" Click="ReloadMods_OnClick"></MenuItem>
+                <MenuItem Header="_Open Mods Folder" Click="OpenModsFolder_OnClick"></MenuItem>
                 <Separator/>
-                <MenuItem Header="_Settings..."></MenuItem>
-                <MenuItem Header="_Exit"></MenuItem>
+                <MenuItem Header="_Settings..." Click="Settings_OnClick"></MenuItem>
+                <MenuItem Header="_Exit" Click="Exit_OnClick"></MenuItem>
             </MenuItem>
         </Menu>
 
