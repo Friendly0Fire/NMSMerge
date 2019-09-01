@@ -1,0 +1,6 @@
+[submodule "deps/PSArcNet"]
+	path = deps/PSArcNet
+	url = https://github.com/Friendly0Fire/PSARC.Net.git
+[submodule "deps/MBINCompiler"]
+	path = deps/MBINCompiler
+	url = https://github.com/monkeyman192/MBINCompiler.git

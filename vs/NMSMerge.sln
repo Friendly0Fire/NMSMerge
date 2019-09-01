@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMSMerge", "NMSMerge.csproj", "{2910D67A-AB9B-42FC-95BE-85336202C34B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "libMBIN-Shared", "..\deps\MBINCompiler\libMBIN\libMBIN-Shared.shproj", "{B6850F17-D8FD-48DE-9CF2-240F1BA87236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libMBIN-DLL", "..\deps\MBINCompiler\libMBIN-DLL\libMBIN-DLL.csproj", "{F2D295A6-D082-4EB4-8FC9-F4687F674939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSArcHandler", "..\deps\PSArcNet\PSArcHandler\PSArcHandler.csproj", "{3ED776B2-C204-4705-8D94-169D678E1713}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\deps\MBINCompiler\libMBIN\libMBIN-Shared.projitems*{b6850f17-d8fd-48de-9cf2-240f1ba87236}*SharedItemsImports = 13
+		..\deps\MBINCompiler\libMBIN\libMBIN-Shared.projitems*{f2d295a6-d082-4eb4-8fc9-f4687f674939}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release [XML docs]|Any CPU = Release [XML docs]|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2910D67A-AB9B-42FC-95BE-85336202C34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2910D67A-AB9B-42FC-95BE-85336202C34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2910D67A-AB9B-42FC-95BE-85336202C34B}.Release [XML docs]|Any CPU.ActiveCfg = Release|Any CPU
+		{2910D67A-AB9B-42FC-95BE-85336202C34B}.Release [XML docs]|Any CPU.Build.0 = Release|Any CPU
+		{2910D67A-AB9B-42FC-95BE-85336202C34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2910D67A-AB9B-42FC-95BE-85336202C34B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D295A6-D082-4EB4-8FC9-F4687F674939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D295A6-D082-4EB4-8FC9-F4687F674939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D295A6-D082-4EB4-8FC9-F4687F674939}.Release [XML docs]|Any CPU.ActiveCfg = Release [XML docs]|Any CPU
+		{F2D295A6-D082-4EB4-8FC9-F4687F674939}.Release [XML docs]|Any CPU.Build.0 = Release [XML docs]|Any CPU
+		{F2D295A6-D082-4EB4-8FC9-F4687F674939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D295A6-D082-4EB4-8FC9-F4687F674939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ED776B2-C204-4705-8D94-169D678E1713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ED776B2-C204-4705-8D94-169D678E1713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ED776B2-C204-4705-8D94-169D678E1713}.Release [XML docs]|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED776B2-C204-4705-8D94-169D678E1713}.Release [XML docs]|Any CPU.Build.0 = Release|Any CPU
+		{3ED776B2-C204-4705-8D94-169D678E1713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED776B2-C204-4705-8D94-169D678E1713}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23893AF5-DD3B-4F06-8DC7-09612D34E876}
+	EndGlobalSection
+EndGlobal
