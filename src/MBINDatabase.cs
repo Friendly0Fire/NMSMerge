@@ -10,32 +10,95 @@ using System.IO;
 
 namespace NMSMerge
 {
-    class MBINDatabase
+    struct MBINMemory
     {
-        public delegate MBINFile LoadMBINDelegate(PSARC pak, int offset);
+        public MBINFile mbin;
+        public MemoryStream mem;
+    }
+    class MBINDatabase : IDisposable
+    {
+        private delegate MBINMemory LoadMBINDelegate();
 
-        public Dictionary<string, PSARC> Paks { get; } = new Dictionary<string, PSARC>();
-        public Dictionary<string, LoadMBINDelegate> LazyMBINs { get; } = new Dictionary<string, LoadMBINDelegate>();
+        readonly Dictionary<string, LoadMBINDelegate> _lazyMBINs = new Dictionary<string, LoadMBINDelegate>();
+        readonly Dictionary<string, MBINMemory> _loadedMBINs = new Dictionary<string, MBINMemory>();
+        private readonly List<PSARC> _paks = new List<PSARC>();
 
-        public void LoadMINs(string folder) => LoadMBINs(Directory.EnumerateFiles(folder, "*.pak"));
+        public MBINMemory this[string name]
+        {
+            get
+            {
+                if (_loadedMBINs.ContainsKey(name))
+                    return _loadedMBINs[name];
+                else if (_lazyMBINs.ContainsKey(name))
+                {
+                    var mbin = _loadedMBINs[name] = _lazyMBINs[name]();
+                    _lazyMBINs.Remove(name);
+                    return mbin;
+                }
+                else
+                    throw new KeyNotFoundException();
+            }
+        }
 
-        public void LoadMBINs(IEnumerable<string> paths)
+        public void LoadMBINsInFolder(string folder, bool includeSubdirectories = false) => LoadMBINsFromPaks(Directory.EnumerateFiles(folder, "*.pak",
+            includeSubdirectories ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly));
+
+        public void LoadMBINsFromPaks(IEnumerable<string> paths)
         {
             foreach(var pakPath in paths)
+                LoadMBINsFromPak(pakPath);
+        }
+
+        public void LoadMBINsFromPak(string pakPath)
+        {
+            var pak = new PSARC(pakPath);
+            _paks.Add(pak);
+            foreach (var entry in pak.TOC)
             {
-                var pak = new PSARC(pakPath);
-                Paks[pakPath] = pak;
-                foreach (var entry in pak.TOC)
-                {
-                    if (Path.GetExtension(entry.FileName)?.ToLower() == ".mbin")
-                        LazyMBINs[entry.FileName] = delegate
+                if (Path.GetExtension(entry.FileName)?.ToLower() == ".mbin")
+                    _lazyMBINs[entry.FileName] = delegate
+                    {
+                        var decompressed = pak.DecompressFile(entry.FileName);
+                        var stream = new MemoryStream(decompressed.BinaryFile);
+                        return new MBINMemory
                         {
-                            var decompressed = pak.DecompressFile(entry.FileName);
-                            var stream = new MemoryStream(decompressed.BinaryFile);
-                            return new MBINFile(stream, true);
+                            mbin = new MBINFile(stream),
+                            mem = stream
                         };
-                }
+                    };
             }
+        }
+
+        public void AddMBIN(string name, MBINMemory mbin)
+        {
+            _loadedMBINs[name] = mbin;
+        }
+
+        public void SaveAllToPak(string pakPath)
+        {
+            foreach (var lazy in _lazyMBINs)
+            {
+                var mem = this[lazy.Key];
+            }
+
+            PSARC pak = new PSARC();
+            foreach (var mbin in _loadedMBINs)
+            {
+                mbin.Value.mbin.Save();
+                var bytes = mbin.Value.mem.GetBuffer();
+                pak.CompressFile(mbin.Key, bytes);
+            }
+
+            // TODO: Fix PSArcHandler to handle creating brand new PAK files
+        }
+
+        public void Dispose()
+        {
+            foreach (var mbin in _loadedMBINs)
+                mbin.Value.mbin.Dispose();
+
+            foreach(var pak in _paks)
+                pak.Dispose();
         }
     }
 }
